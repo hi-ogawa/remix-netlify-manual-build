@@ -2,11 +2,8 @@ import { Links, LiveReload, Meta, Outlet, Scripts } from "@remix-run/react";
 import { LinksFunction } from "@remix-run/server-runtime";
 import * as React from "react";
 
-// @ts-ignore
-import indexCss from "./index.css";
-
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: indexCss }];
+  return [{ rel: "stylesheet", href: require("./index.css") }];
 };
 
 export default function Root() {

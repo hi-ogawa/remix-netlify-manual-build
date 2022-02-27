@@ -6,6 +6,10 @@ build_dir="build/remix/production"
 rm -rf "$build_dir"
 rm -rf public/build
 
+# tailwind
+rm -f app/index.css
+pnpm run tailwind
+
 # default "node-cjs" build
 BUILD_MODE=production pnpx remix build
 
