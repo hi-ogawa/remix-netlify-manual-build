@@ -1,9 +1,16 @@
 import { useLoaderData } from "@remix-run/react";
 import { LoaderFunction } from "@remix-run/server-runtime";
 import * as React from "react";
+import { cloneDeep } from "lodash";
 
 export const loader: LoaderFunction = async () => {
-  return JSON.stringify(process.env, null, 2);
+  const env = cloneDeep(process.env);
+  for (const key in env) {
+    if (key.startsWith("APP_")) {
+      env[key] = "********";
+    }
+  }
+  return JSON.stringify(env, null, 2);
 };
 
 export default function Home() {

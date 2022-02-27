@@ -9,6 +9,7 @@ specifiers:
   '@remix-run/server-runtime': ^1.2.2
   '@sinclair/typebox': ^0.23.4
   '@types/bcryptjs': ^2.4.2
+  '@types/lodash': ^4.14.179
   '@types/node': ^17.0.21
   '@types/react': ^17.0.39
   '@types/react-dom': ^17.0.11
@@ -20,6 +21,7 @@ specifiers:
   esbuild: ^0.14.23
   knex: ^1.0.3
   kysely: ^0.17.1
+  lodash: ^4.17.21
   mysql2: ^2.3.3
   postcss: ^8.4.7
   prettier: ^2.5.1
@@ -41,6 +43,7 @@ dependencies:
   ajv-formats: 2.1.1
   bcryptjs: 2.4.3
   knex: 1.0.3_mysql2@2.3.3
+  lodash: 4.17.21
   mysql2: 2.3.3
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -50,6 +53,7 @@ devDependencies:
   '@remix-run/dev': 1.2.2_react-dom@17.0.2+react@17.0.2
   '@remix-run/serve': 1.2.2_react-dom@17.0.2+react@17.0.2
   '@types/bcryptjs': 2.4.2
+  '@types/lodash': 4.14.179
   '@types/node': 17.0.21
   '@types/react': 17.0.39
   '@types/react-dom': 17.0.11
@@ -384,6 +388,10 @@ packages:
     resolution: {integrity: sha512-FXCJgyyN3ivVgRoml4h94G/p3kY+u/B86La+QptcqJaWtBWtmc6TtkNfS40n9bIvyLteHh7zXOtgbobORKPbDg==}
     dependencies:
       '@types/node': 17.0.21
+    dev: true
+
+  /@types/lodash/4.14.179:
+    resolution: {integrity: sha512-uwc1x90yCKqGcIOAT6DwOSuxnrAbpkdPsUOZtwrXb4D/6wZs+6qG7QnIawDuZWg0sWpxl+ltIKCaLoMlna678w==}
     dev: true
 
   /@types/mdast/3.0.10:
