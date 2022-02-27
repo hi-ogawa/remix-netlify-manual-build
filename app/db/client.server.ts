@@ -2,7 +2,9 @@ import { Knex, knex as initKnex } from "knex";
 import { SERVER_CONFIG } from "../config.server";
 
 const CONFIG: Knex.Config = {
-  client: "mysql2",
+  // statically require knex dialect for esbuild to bundle it
+  // instead of dynamic require (https://github.com/knex/knex/blob/3616791ac2a6d17d55b29feed6a503a793d7c488/lib/knex-builder/internal/config-resolver.js#L38)
+  client: require("knex/lib/dialects/mysql2"),
   connection: {
     host: SERVER_CONFIG.MYSQL_HOST,
     port: Number(SERVER_CONFIG.MYSQL_PORT),
