@@ -25,13 +25,13 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   // Validate uniqueness
-  if (await users.select().where("name", data.name).first()) {
+  if (await users().select().where("name", data.name).first()) {
     return { data, message: `Name '${data.name}' is already taken` };
   }
 
   // Save
   const passwordHash = await makePasswordHash(data.password);
-  const [userId] = await users.insert({ name: data.name, passwordHash });
+  const [userId] = await users().insert({ name: data.name, passwordHash });
 
   // Persist to session and redirect
   return redirect("/users/profile", {

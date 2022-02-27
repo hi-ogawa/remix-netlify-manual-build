@@ -8,4 +8,4 @@ export interface UserTable {
   updatedAt: Date;
 }
 
-export const users = client<UserTable>("users");
+export const users = () => client<UserTable>("users");

@@ -47,7 +47,7 @@ export async function login(
   name: string,
   password: string
 ): Promise<UserTable | undefined> {
-  const found = await users.select("*").where("name", name).first();
+  const found = await users().select("*").where("name", name).first();
   if (found) {
     if (await verifyPassword(password, found.passwordHash)) {
       return found;
@@ -64,7 +64,7 @@ export async function getSessionUser(
     return;
   }
   const userId: number = session.get(SESSION_USER_ID_KEY);
-  return await users.select("*").where("id", userId).first();
+  return await users().select("*").where("id", userId).first();
 }
 
 export async function setSessionUser(

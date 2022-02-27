@@ -1,7 +1,7 @@
 import { useLoaderData } from "@remix-run/react";
 import { LoaderFunction } from "@remix-run/server-runtime";
+import { cloneDeep, sortBy } from "lodash";
 import * as React from "react";
-import { cloneDeep } from "lodash";
 
 export const loader: LoaderFunction = async () => {
   const env = cloneDeep(process.env);
@@ -10,7 +10,10 @@ export const loader: LoaderFunction = async () => {
       env[key] = "********";
     }
   }
-  return JSON.stringify(env, null, 2);
+  const sortedEnv = Object.fromEntries(
+    sortBy(Object.entries(env), ([key]) => key)
+  );
+  return JSON.stringify(sortedEnv, null, 2);
 };
 
 export default function Home() {
