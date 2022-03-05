@@ -22,6 +22,11 @@ pnpx knex migrate:latest
 
 # migration on production
 pnpx knex --knexfile knexfile.production.js migrate:latest
+
+# testing
+pnpm run db:reset:test
+DATABASE_ENV=test pnpx knex migrate:latest
+pnpm run test
 ```
 
 ## references
