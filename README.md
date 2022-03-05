@@ -17,16 +17,19 @@ netlify link --name remix-netlify-manual-build-hiro18181
 
 # database setup
 pnpm run services:up
-pnpm run db:reset
-pnpm run db:migrate
+pnpm run db:setup
 
 # migration on production
 pnpx knex --knexfile knexfile.production.js migrate:latest
 
 # testing
-pnpm run db:reset:test
-pnpm run db:migrate:test
+# - jest
+pnpm run db:setup:test
 pnpm run test
+# - playwright
+pnpx playwright install
+pnpm run db:setup:test
+pnpm run test:playwright
 ```
 
 ## references

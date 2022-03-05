@@ -17,11 +17,15 @@
     "db:reset:test": "docker-compose exec -T mysql mysql -uroot -ppassword -e 'DROP DATABASE IF EXISTS remix_test; CREATE DATABASE remix_test;'",
     "db:migrate": "knex migrate:latest",
     "db:migrate:test": "DATABASE_ENV=test knex migrate:latest",
+    "db:setup": "pnpm run db:reset && pnpm run db:migrate",
+    "db:setup:test": "pnpm run db:reset:test && pnpm run db:migrate:test",
     "services:up": "docker-compose up -d mysql",
     "services:down": "docker-compose down",
     "services:clear": "docker-compose down -v --remove-orphans && docker-compose rm -f -s -v",
     "services:wait": "docker-compose run --rm dockerize -wait tcp://mysql:3306",
-    "test": "APP_MYSQL_DATABASE=remix_test jest"
+    "test": "APP_MYSQL_DATABASE=remix_test jest",
+    "test:playwright": "APP_MYSQL_DATABASE=remix_test playwright test",
+    "test:playwright:debug": "APP_MYSQL_DATABASE=remix_test PWDEBUG=1 playwright test"
   },
   "dependencies": {
     "@netlify/functions": "^0.10.0",
@@ -46,6 +50,7 @@
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@jest/globals": "^27.5.1",
+    "@playwright/test": "^1.19.2",
     "@remix-run/dev": "^1.2.2",
     "@remix-run/node": "^1.2.3",
     "@remix-run/serve": "^1.2.2",
