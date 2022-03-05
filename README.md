@@ -5,6 +5,7 @@ pnpm install
 
 pnpm run dev  # start remix app
 pnpm run tsc:dev  # type check
+pnpm run tailwind:dev  # tailwind css generation
 
 pnpm run lint
 
@@ -27,8 +28,8 @@ pnpx knex --knexfile knexfile.production.js migrate:latest
 pnpm run db:setup:test
 pnpm run test
 # - playwright
-pnpx playwright install
 pnpm run db:setup:test
+pnpx playwright install
 pnpm run test:playwright
 ```
 
