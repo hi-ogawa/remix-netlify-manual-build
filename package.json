@@ -15,6 +15,12 @@
     "lint:check": "pnpm run prettier:check && pnpm run isort:check",
     "db:reset": "docker-compose exec mysql mysql -uroot -ppassword -e 'DROP DATABASE IF EXISTS remix_development; CREATE DATABASE remix_development;'",
     "db:reset:test": "docker-compose exec mysql mysql -uroot -ppassword -e 'DROP DATABASE IF EXISTS remix_test; CREATE DATABASE remix_test;'",
+    "db:migrate": "knex migrate:latest",
+    "db:migrate:test": "DATABASE_ENV=test knex migrate:latest",
+    "services:up": "docker-compose up -d mysql",
+    "services:down": "docker-compose down",
+    "services:clear": "docker-compose down -v --remove-orphans && docker-compose rm -f -s -v",
+    "services:wait": "docker-compose run --rm dockerize -wait tcp://mysql:3306",
     "test": "APP_MYSQL_DATABASE=remix_test jest"
   },
   "dependencies": {

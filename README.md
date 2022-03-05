@@ -16,16 +16,16 @@ netlify sites:create --name remix-netlify-manual-build-hiro18181
 netlify link --name remix-netlify-manual-build-hiro18181
 
 # database setup
-docker-compse up
+pnpm run services:up
 pnpm run db:reset
-pnpx knex migrate:latest
+pnpm run db:migrate
 
 # migration on production
 pnpx knex --knexfile knexfile.production.js migrate:latest
 
 # testing
 pnpm run db:reset:test
-DATABASE_ENV=test pnpx knex migrate:latest
+pnpm run db:migrate:test
 pnpm run test
 ```
 
